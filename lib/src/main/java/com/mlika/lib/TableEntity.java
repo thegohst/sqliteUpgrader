@@ -1,6 +1,5 @@
 package com.mlika.lib;
 
-import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
@@ -39,7 +38,7 @@ public class TableEntity {
     }
 
     @Override
-    public boolean equals(@Nullable Object obj) {
+    public boolean equals( Object obj) {
         return obj instanceof TableEntity && ((TableEntity) obj).tableName.equals(tableName);
     }
 }

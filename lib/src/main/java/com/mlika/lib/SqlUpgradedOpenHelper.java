@@ -6,11 +6,6 @@ import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Build;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 
@@ -22,23 +17,16 @@ public abstract class SqlUpgradedOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = SqlUpgradedOpenHelper.class.getSimpleName();
     private String databaseName;
 
-
-    public SqlUpgradedOpenHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public SqlUpgradedOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-        this.databaseName = name;
-
+        this.databaseName=name;
     }
 
-    public SqlUpgradedOpenHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version, @Nullable DatabaseErrorHandler errorHandler) {
+    public SqlUpgradedOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler) {
         super(context, name, factory, version, errorHandler);
-        this.databaseName = name;
+        this.databaseName=name;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.P)
-    public SqlUpgradedOpenHelper(@Nullable Context context, @Nullable String name, int version, @NonNull SQLiteDatabase.OpenParams openParams) {
-        super(context, name, version, openParams);
-        this.databaseName = name;
-    }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
